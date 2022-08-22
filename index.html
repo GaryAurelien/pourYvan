@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div id="formulaire">
+    <h2>Remplire le formulaire</h2>
+    <form class="container" name="reglementFormulaire" action="result.html" onSubmit="result()">
+
+      <input type="text" id="nameProduct" placeholder="Nom Produit" name="nameProduct" required="required" onkeyup='isCharSet()'/>
+      <br>
+      <input id="quantity" placeholder="Quantité" type="number" min="1" max="100" required="required" onkeyup='isCharSet()'>
+      <br>
+      <input type="text" id="prixProduct" placeholder="Prix du produit" required="required" onkeyup='isCharSet()'>
+      <br>
+      <input type="number" id="pourcentage" placeholder="%" name="tentacles" max="100">
+      <br>
+      <button id="validation" type="submit" onclick="calculePrix()"style="width: 150px; margin-left: 10px">Valider</button>
+    </form>
+  </div>
+</body>
+
+</html>
