@@ -62,10 +62,12 @@ input{
   background: green;
   border-radius: 20px;
   padding: 5px;
+  transition: all 1s ease-in-out;
+  cursor : pointer;
 }
 
 .divValider button:hover {
-  transform: scale(1.1);
+  transform: scale(1.4);
 }
 
 
@@ -80,6 +82,8 @@ input{
   background: red;
   border-radius: 20px;
   padding: 5px;
+  transition: all 1s ease-in-out;
+  cursor : pointer;
 }
 
 .divZero button:hover {
