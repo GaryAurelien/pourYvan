@@ -1,56 +1,3 @@
-/*// Recuperation des valeur des imput est on les stoque dans LocalStorage
-
-function result() {
-  let nameProduct = document.getElementById("nameProduct").value;
-  let quantity = document.getElementById("quantity").value;
-  let prixProduct = document.getElementById("prixProduct").value;
-  let pourcentage = document.getElementById("pourcentage").value;
-
-  sessionStorage.setItem("Nom", nameProduct);
-  sessionStorage.setItem("Quantité", quantity);
-  sessionStorage.setItem("Prix", prixProduct);
-  sessionStorage.setItem("Pourcentage", pourcentage);
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-//recuparetion des valeur dans LocalStorage
-
-let getNameProduct = sessionStorage.getItem("Nom");
-let getQuantity = sessionStorage.getItem("Quantité");
-let getPrixProduct = sessionStorage.getItem("Prix");
-let getPourcentage = sessionStorage.getItem("Pourcentage");
-console.log(getNameProduct, getQuantity, getPrixProduct, getPourcentage);
-
-///////////////////////////////////////////////////////////////////////////////
-
-// la fonction qui va calculer le prix en fonction des quantité
-let PrixTotalSansPourcentage = getPrixProduct * getQuantity;
-
-// calculer le prix en fonction des quantité et du pourcentage de reduction
-let PrixTotalAvecPourcentage1 = PrixTotalSansPourcentage * getPourcentage;
-let PrixTotalAvecPourcentage2 = PrixTotalAvecPourcentage1 / 100;
-let PrixTotalAvecPourcentage3 =
-  PrixTotalSansPourcentage - PrixTotalAvecPourcentage2;
-
-///////////////////////////////////////////////////////////////////////////////
-
-if (getPourcentage == 0 || null) {
-  let affichageConclusion = (document.getElementById(
-    "messageDeValidation"
-  ).innerHTML = `<h1>Résultat</h1>
-  <h2>Tu a commander ${getQuantity} ${getNameProduct} pour ${PrixTotalSansPourcentage}€</h2>
-  `);
-} else {
-  let affichageConclusion = (document.getElementById(
-    "messageDeValidation"
-  ).innerHTML = `<h1>Résultat</h1>
-  <h2>Tu a commander ${getQuantity} ${getNameProduct} pour ${PrixTotalAvecPourcentage3}€ car tu avais ${getPourcentage}% de remise</h2>
-  `);
-}
-
-*/
-
 document.getElementById("nameProduct").addEventListener("change", nameArticle);
 
 function nameArticle() {
@@ -65,66 +12,58 @@ function nameArticle() {
   } else if (nameArticle == "poire") {
     document.getElementById("prixProduct").innerHTML = 15;
     document.getElementById("prixProduct").value = 15;
-  } else if (nameArticle == "") {
+  } else if (nameArticle == "" && getPrixProductModif != " ") {
     document.getElementById("prixProduct").innerHTML = "";
     document.getElementById("prixProduct").value = "";
   }
 }
 
-document
-  .getElementById("prixProduct")
-  .addEventListener("click", changementPrix);
-
-function changementPrix() {
-  document.getElementById("prixProduct").value = "";
-  document.getElementById("prixProduct").innerHTM = "";
-}
+///////////////////////////////////////////////////////////////////////////////
 
 // Recuperation des valeur des imput est on les stoque dans LocalStorage
-
 function result() {
+  event.preventDefault();
   let nameProduct = document.getElementById("nameProduct").value;
   let quantity = document.getElementById("quantity").value;
   let prixProduct = document.getElementById("prixProduct").value;
   let pourcentage = document.getElementById("pourcentage").value;
+  let prixProductModif = document.getElementById("prixProductModif").value;
+  let prixVente = document.getElementById("prixVente").value;
 
   sessionStorage.setItem("Nom", nameProduct);
   sessionStorage.setItem("Quantité", quantity);
   sessionStorage.setItem("Prix", prixProduct);
   sessionStorage.setItem("Pourcentage", pourcentage);
-}
+  sessionStorage.setItem("PrixProductModif", prixProductModif);
+  sessionStorage.setItem("PrixVente", prixVente);
 
-///////////////////////////////////////////////////////////////////////////////
-
-//recuparetion des valeur dans LocalStorage
-
+  //recuparetion des valeur dans LocalStorage
 let getNameProduct = sessionStorage.getItem("Nom");
 let getQuantity = sessionStorage.getItem("Quantité");
 let getPrixProduct = sessionStorage.getItem("Prix");
 let getPourcentage = sessionStorage.getItem("Pourcentage");
-console.log(getNameProduct, getQuantity, getPrixProduct, getPourcentage);
+let getPrixProductModif = sessionStorage.getItem("PrixProductModif")
+let getPrixVente = sessionStorage.getItem("PrixVente");
+console.log(getNameProduct, getQuantity, getPrixProduct, getPourcentage, getPrixProductModif, getPrixVente);
 
-///////////////////////////////////////////////////////////////////////////////
+  if (prixProductModif !== "" && pourcentage == "") {
+    let prixDeVenteModifResult = getQuantity * getPrixProductModif;
+    document.getElementById("prixVente").innerHTML = `${prixDeVenteModifResult}€`;
+  } else if (prixProductModif == "" && pourcentage == "") {
+    let prixDeBaseResult = getPrixProduct * getQuantity;
+    document.getElementById("prixVente").innerHTML = `${prixDeBaseResult}€`;
+  } else if (prixProductModif !== "" && pourcentage !== "") {
+    let prixDeVenteModifResult = getQuantity * getPrixProductModif;
+    let prixDeBaseResult = getPrixProductModif * getQuantity;
+    let prixVenteModif = prixDeBaseResult * getPourcentage;
+    let prixVenteModifEtRemiser = prixVenteModif / 100;
+    document.getElementById('prixVenteRemiser').innerHTML = `${prixVenteModifEtRemiser}`
+  } else if (prixProductModif == "" && pourcentage !== "") {
+    let prixDeBaseResult = getPrixProduct * getQuantity;
+    let prixVenteModif = prixDeBaseResult * getPourcentage;
+    let prixVenteModifEtRemiser = prixVenteModif / 100;
+    document.getElementById('prixVenteRemiser').innerHTML = `${prixVenteModifEtRemiser}`
+  }
 
-// la fonction qui va calculer le prix en fonction des quantité
-let PrixTotalSansPourcentage = getPrixProduct * getQuantity;
-
-// calculer le prix en fonction des quantité et du pourcentage de reduction
-let PrixTotalAvecPourcentage1 = PrixTotalSansPourcentage * getPourcentage;
-let PrixTotalAvecPourcentage2 = PrixTotalAvecPourcentage1 / 100;
-let PrixTotalAvecPourcentage3 =
-  PrixTotalSansPourcentage - PrixTotalAvecPourcentage2;
-
-///////////////////////////////////////////////////////////////////////////////
-
-if (getPourcentage == 0 || null) {
-  let affichageConclusion = (document.getElementById(
-    "messageDeValidation"
-  ).innerHTML = `<h1>Résultat</h1>
-  <h2>Tu a commander ${getQuantity} ${getNameProduct} pour ${PrixTotalSansPourcentage}€</h2>
-  `);
-} else {
-  let affichageConclusion = (document.getElementById(
-    "messageDeValidation"
-  ).innerHTML = `<h1>Résultat</h1><h2>Tu a commander ${getQuantity} ${getNameProduct} pour ${PrixTotalAvecPourcentage3}€ car tu avais ${getPourcentage}% de remise</h2>`);
 }
+

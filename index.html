@@ -13,7 +13,7 @@
 <body>
   <div id="formulaire">
     <h1>Logiciel de calcule de prix avec ou sans remise</h1>
-    <form class="container" name="reglementFormulaire" action="result.html" onSubmit="result()">
+    <form class="container" name="reglementFormulaire" onSubmit="result()">
       <div class="divForm">
         <h4>Nom Produit</h4>
         <input type="text" id="nameProduct" placeholder="Nom Produit" name="nameProduct" required="required" />
@@ -29,7 +29,7 @@
       </div>
       <div class="divForm">
         <h4>Prix Vente Produit</h4>
-        <input type="text" id="prixVente" placeholder="Prix de vente">
+        <div id="prixVente"><span>€</span></div>
       </div>
       <div class="divForm">
         <h4>Pourcentage de remise</h4>
@@ -37,52 +37,15 @@
       </div>
       <div class="divForm">
         <h4>Prix de vente remiser</h4>
-        <input type="number" id="prixVenteRemiser" placeholder="" name="tentacles" max="100">
+        <div id="prixVenteRemiser"><span>€</span></div>
       </div>
-      <div class="divForm"><button id="validation" type="submit" onclick="calculePrix()"
-          style="width: 150px; margin-left: 10px">Valider</button>
+      <div class="divValider"><button id="validation" type="submit""
+          style=" width: 150px; margin-left: 10px">Valider</button>
       </div>
     </form>
-  </div>
+    <div class="divZero"><button id="Zero" onclick="history.go(0)" style="width: 150px; margin-left: 10px">Mise a
+        Zéro</button>
+    </div>
 </body>
-
-
-<div></div>
-<!-----------------------------------------------------------------------------------
-
-<body>
-  <div id="formulaire">
-    <h2>Remplire le formulaire</h2>
-    <form class="container" name="reglementFormulaire" action="result.html" onSubmit="result()">
-
-      <input type="text" id="nameProduct" placeholder="Nom Produit" name="nameProduct" required="required" />
-      <div id="prixProduct"></div>
-      <br>
-      <input id="quantity" placeholder="Quantité" type="number" min="1" max="100" required="required">
-      <br>
-      <input type="text" id="prixProductModif" placeholder="Prix Dérogation" />
-      <br>
-      <input type="number" id="pourcentage" placeholder="%" name="tentacles" max="100">
-      <br>
-      <button id="validation" type="submit" onclick="calculePrix()"
-        style="width: 150px; margin-left: 10px">Valider</button>
-    </form>
-  </div>
-</body>
-
-------------------------------------------------------------------------------------->
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </html>

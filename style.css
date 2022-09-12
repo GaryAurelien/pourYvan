@@ -7,6 +7,13 @@ body {
   margin-top: 100px;
 }
 
+#formulaire{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
 h1 {
   display: flex;
   justify-content: center;
@@ -19,7 +26,7 @@ h4{
 }
 
 .container {
-  border: 1px solid red;
+  border: 5px solid green;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -30,6 +37,7 @@ h4{
   width: 500px;
   height: auto;
   padding: 20px;
+  border-radius: 20px;
 }
 
 input{
@@ -46,4 +54,34 @@ input{
 #prixProduct{
   color: black;
   margin-left: 15px;
+}
+
+
+.divValider button {
+  color:  white;
+  background: green;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.divValider button:hover {
+  transform: scale(1.1);
+}
+
+
+.divZero{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.divZero button {
+  color:  white;
+  background: red;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.divZero button:hover {
+  transform: scale(1.5);
 }
