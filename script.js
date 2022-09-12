@@ -59,10 +59,10 @@ console.log(getNameProduct, getQuantity, getPrixProduct, getPourcentage, getPrix
     let prixVenteModifEtRemiser = Math.round(prixDeVenteRemiserAvecVirgule);
     document.getElementById('prixVenteRemiser').innerHTML = `${prixVenteModifEtRemiser}`
   } else if (prixProductModif == "" && pourcentage !== "") {
-    let prixDeBaseResult = getPrixProduct * getQuantity;
-    /*let prixVenteModif = prixDeBaseResult * getPourcentage;
-    let prixVenteModifEtRemiser = prixVenteModif / 100;*/
-    document.getElementById('prixVenteRemiser').innerHTML = `${prixVenteModifEtRemiser}`
+    let prixDeBaseResult = getQuantity * getPrixProduct;
+    let prixDeVenteRemiserAvecVirgule = (1 - getPourcentage / 100) * prixDeBaseResult;
+    let prixVenteRemiser = Math.round(prixDeVenteRemiserAvecVirgule);
+    document.getElementById('prixVenteRemiser').innerHTML = `${prixVenteRemiser}`
   }
 
 }
