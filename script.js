@@ -29,6 +29,7 @@ function result() {
   let pourcentage = document.getElementById("pourcentage").value;
   let prixProductModif = document.getElementById("prixProductModif").value;
   let prixVente = document.getElementById("prixVente").value;
+  let pourcentageDeMarge = document.getElementById("pourcentageDeMarge").value;
 
   sessionStorage.setItem("Nom", nameProduct);
   sessionStorage.setItem("Quantité", quantity);
@@ -36,6 +37,7 @@ function result() {
   sessionStorage.setItem("Pourcentage", pourcentage);
   sessionStorage.setItem("PrixProductModif", prixProductModif);
   sessionStorage.setItem("PrixVente", prixVente);
+  sessionStorage.setItem("PourcentageDeMarge", pourcentageDeMarge);
 
   //recuparetion des valeur dans LocalStorage
 let getNameProduct = sessionStorage.getItem("Nom");
@@ -44,22 +46,26 @@ let getPrixProduct = sessionStorage.getItem("Prix");
 let getPourcentage = sessionStorage.getItem("Pourcentage");
 let getPrixProductModif = sessionStorage.getItem("PrixProductModif")
 let getPrixVente = sessionStorage.getItem("PrixVente");
-console.log(getNameProduct, getQuantity, getPrixProduct, getPourcentage, getPrixProductModif, getPrixVente);
+let getPourcentageDeMarge = sessionStorage.getItem("PourcentageDeMarge")
+console.log(getNameProduct, getQuantity, getPrixProduct, getPourcentage, getPrixProductModif, getPrixVente, getPourcentageDeMarge);
+
+let marge = (1 + getPourcentageDeMarge / 100);
 
   if (prixProductModif !== "" && pourcentage == "") {
     let prixDeVenteModifResult = getQuantity * getPrixProductModif;
-    document.getElementById("prixVente").innerHTML = `${prixDeVenteModifResult}€`;
+    let prixDeVenteModifResultAvecMarge = prixDeVenteModifResult * marge;
+    document.getElementById("prixVente").innerHTML = `${prixDeVenteModifResultAvecMarge}€`;
   } else if (prixProductModif == "" && pourcentage == "") {
     let prixDeBaseResult = getPrixProduct * getQuantity;
-    document.getElementById("prixVente").innerHTML = `${prixDeBaseResult}€`;
+    let prixDeBaseResultAvecMarge = prixDeBaseResult * marge;
+    document.getElementById("prixVente").innerHTML = `${prixDeBaseResultAvecMarge}€`;
   } else if (prixProductModif !== "" && pourcentage !== "") {
-    let prixDeVenteModifResult = getQuantity * getPrixProductModif;
-    let prixDeBaseResult = getPrixProductModif * getQuantity;
+    let prixDeBaseResult = (getPrixProductModif * getQuantity) * marge;
     let prixDeVenteRemiserAvecVirgule = (1 - getPourcentage / 100) * prixDeBaseResult;
     let prixVenteModifEtRemiser = Math.round(prixDeVenteRemiserAvecVirgule);
     document.getElementById('prixVenteRemiser').innerHTML = `${prixVenteModifEtRemiser}€`
   } else if (prixProductModif == "" && pourcentage !== "") {
-    let prixDeBaseResult = getQuantity * getPrixProduct;
+    let prixDeBaseResult = (getQuantity * getPrixProduct) * marge;
     let prixDeVenteRemiserAvecVirgule = (1 - getPourcentage / 100) * prixDeBaseResult;
     let prixVenteRemiser = Math.round(prixDeVenteRemiserAvecVirgule);
     document.getElementById('prixVenteRemiser').innerHTML = `${prixVenteRemiser}€`
