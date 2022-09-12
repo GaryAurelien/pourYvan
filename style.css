@@ -7,11 +7,11 @@ body {
   margin-top: 100px;
 }
 
-#formulaire{
+#formulaire {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
 h1 {
@@ -20,7 +20,7 @@ h1 {
   align-items: center;
 }
 
-h4{
+h4 {
   margin-right: 10px;
   margin-left: 10px;
 }
@@ -34,14 +34,21 @@ h4{
   margin-left: auto;
   margin-right: auto;
   background-color: grey;
-  width: 500px;
+  width: 400px;
   height: auto;
   padding: 20px;
   border-radius: 20px;
 }
 
-input{
+#nameProduct,
+#Quantité,
+#prixProductModif {
   width: 20%;
+}
+
+#pourcentage,
+#pourcentageDeMarge {
+  width: 40px;
 }
 
 .divForm {
@@ -51,41 +58,50 @@ input{
 }
 
 
-#prixProduct{
+#prixProduct {
   color: black;
   margin-left: 15px;
 }
 
-
-.divValider button {
-  color:  white;
-  background: green;
-  border-radius: 20px;
-  padding: 5px;
-  transition: all 1s ease-in-out;
-  cursor : pointer;
-}
-
-.divValider button:hover {
-  transform: scale(1.4);
+.bouttonValiderEtReload {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 20px ;
+  margin-bottom: 20px;
 }
 
 
-.divZero{
+.divValider,
+.divZero {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+}
+
+.divValider button {
+  color: white;
+  background: green;
+  border-radius: 20px;
+  transition: all 1s ease-in-out;
+  cursor: pointer;
+}
+
+.divValider button:hover,
+.divZero button:hover {
+  transform: scale(1.2);
 }
 
 .divZero button {
-  color:  white;
+  color: white;
   background: red;
   border-radius: 20px;
-  padding: 5px;
   transition: all 1s ease-in-out;
-  cursor : pointer;
+  cursor: pointer;
 }
 
-.divZero button:hover {
-  transform: scale(1.5);
-}
+.fa-rotate-right, .fa-check {
+  padding: 20px;
+};
