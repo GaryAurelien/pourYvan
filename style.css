@@ -1,15 +1,6 @@
-html {
+html, body {
   margin: 0 !important;
   padding: 0 !important;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height:auto;
-  margin-top: 100px;
 }
 
 #formulaire {
@@ -137,6 +128,13 @@ h4 {
 @media screen and (max-width:459px) {
   .container {
     width: 250px;
+  }
+
+}
+
+@media screen and (max-width:317px) {
+  .container {
+    width: 200px;
   }
 
 }
